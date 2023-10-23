@@ -24,7 +24,6 @@ unsigned long interval = 1000; // interval in milliseconds
 // Define variable for leak detection
 bool leakDetected = false;
 
-
 void setup() {
   // Initialize serial communication
   Serial.begin(9600);
@@ -69,8 +68,9 @@ void loop() {
       // Set leak detected flag to true
       leakDetected = true;
       // Turn on LED and buzzer
-      digitalWrite(LED_PIN, HIGH);
+      digitalWrite(LED_PIN, LOW);
       digitalWrite(BUZZER_PIN, HIGH);
+      Serial.println("Leak Detected");
       // Close solenoid valve
       digitalWrite(VALVE_PIN, LOW);
     }
@@ -78,7 +78,7 @@ void loop() {
       // Set leak detected flag to false
       leakDetected = false;
       // Turn off LED and buzzer
-      digitalWrite(LED_PIN, LOW);
+      digitalWrite(LED_PIN, HIGH);
       digitalWrite(BUZZER_PIN, LOW);
       // Open solenoid valve
       digitalWrite(VALVE_PIN, HIGH);
